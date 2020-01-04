@@ -1,12 +1,17 @@
 <template>
   <div class="login">
     <div class="thirdPage">
-      <div class="third-box bounceInDown">
+      <!-- <div class="third-box bounceInDown">
         <p class="name">{{name}}</p>
         <p class="mubiao">2020目标</p>
         <p class="txt">销售量：<span class="number_txt">{{sale}}</span> 辆</p>
         <p class="txt">收益额：<span class="number_txt">{{income}}</span> 元</p>
+        
+      </div> -->
+      <div class="third-box bounceInDown">
+           <img src="../../assets/mubioa.png" alt="" style="width:100%;">
       </div>
+     
     </div>
 
   </div>
@@ -65,11 +70,13 @@
   }
   .third-box{
 
-    width:640px;
+    /* width:640px;
     background:rgba(0,0,0,0.6);
     border-radius:30px;
     text-align: center;
-    padding:30px 30px 40px;
+    padding:30px 30px 40px; */
+    width:100%;
+    position: relative;
   }
   .name{
     font-size:40px;
