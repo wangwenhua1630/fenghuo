@@ -6,12 +6,19 @@
         <p class="mubiao">2020目标</p>
         <p class="txt">销售量：<span class="number_txt">{{sale}}</span> 辆</p>
         <p class="txt">收益额：<span class="number_txt">{{income}}</span> 元</p>
-        
+
       </div> -->
       <div class="third-box bounceInDown">
            <img src="../../assets/mubioa.png" alt="" style="width:100%;">
       </div>
-     
+      <div class="mask-box bounceInDown">
+        <div class="mask-box-half">
+          <div class="name">{{name}}</div>
+          <div class="txt n1"><span class="number_txt">{{sale}}</span></div>
+          <div class="txt n2"><span class="number_txt">{{income}}</span></div>
+        </div>
+
+      </div>
     </div>
 
   </div>
@@ -67,6 +74,8 @@
     display:flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+    overflow: hidden;
   }
   .third-box{
 
@@ -78,10 +87,33 @@
     width:100%;
     position: relative;
   }
+  .mask-box{
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .mask-box-half{
+    width:690px;
+    height:800px;
+  }
+  .n1{
+    margin-top:45px;
+  }
+  .n2{
+    margin-top:120px;
+  }
   .name{
-    font-size:40px;
+    font-size:50px;
     color:#FFFF99;
-    margin-bottom:35px;
+    /*margin-bottom:35px;*/
+    margin-top: 290px;
+    font-weight: 600;
   }
   .mubiao{
     font-size:80px;
@@ -93,7 +125,7 @@
   }
   .number_txt{
       font-weight:600;
-      font-size:58px;
+      font-size:80px;
       font-style:italic;
   }
   .txt{
