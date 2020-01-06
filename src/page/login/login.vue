@@ -4,7 +4,7 @@
           <div class="rubberBand">
               <img src="../../assets/topic.png" alt="" class="topic-img">
           </div>
-          
+
       </div>
 
     </div>
@@ -42,7 +42,7 @@
 
 <style scoped>
 .login{
-  background: url("../../assets/bg.jpg") no-repeat center center;
+  background: url("../../assets/bg.jpeg") no-repeat center center;
   /*background-size: 100%;*/
   background-attachment: fixed;
   background-size: 100% 100%;

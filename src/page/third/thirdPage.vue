@@ -1,24 +1,23 @@
 <template>
   <div class="login">
     <div class="thirdPage">
-      <!-- <div class="third-box bounceInDown">
-        <p class="name">{{name}}</p>
-        <p class="mubiao">2020目标</p>
-        <p class="txt">销售量：<span class="number_txt">{{sale}}</span> 辆</p>
-        <p class="txt">收益额：<span class="number_txt">{{income}}</span> 元</p>
-
-      </div> -->
       <div class="third-box bounceInDown">
-           <img src="../../assets/mubioa.png" alt="" style="width:100%;">
-      </div>
-      <div class="mask-box bounceInDown">
-        <div class="mask-box-half">
-          <div class="name">{{name}}</div>
-          <div class="txt n1"><span class="number_txt">{{sale}}</span></div>
-          <div class="txt n2"><span class="number_txt">{{income}}</span></div>
-        </div>
+        <p class="name">{{name}}</p>
+        <p class="mubiao">2020年销售目标</p>
+        <p class="txt"><span class="number_txt">{{sale}}</span><sub class="upper">辆</sub></p>
 
       </div>
+      <!--<div class="third-box bounceInDown">-->
+           <!--<img src="../../assets/mubioa.png" alt="" style="width:100%;">-->
+      <!--</div>-->
+      <!--<div class="mask-box bounceInDown">-->
+        <!--<div class="mask-box-half">-->
+          <!--<div class="name">{{name}}</div>-->
+          <!--<div class="txt n1"><span class="number_txt">{{sale}}</span></div>-->
+          <!--<div class="txt n2"><span class="number_txt">{{income}}</span></div>-->
+        <!--</div>-->
+
+      <!--</div>-->
     </div>
 
   </div>
@@ -31,7 +30,7 @@
     data(){
       return{
           code:this.$route.query.code,
-        name:'南二环店',
+        name:'',
         sale:0,
         income:0
       }
@@ -46,7 +45,7 @@
       fhInfoSumit(this.code).then(res=>{
           this.$toast.clear();
           if(res.data){
-            // this.name=res.data.data.name;
+             this.name=res.data.data.name;
             this.sale=res.data.data.sale.toLocaleString();
             this.income=res.data.data.income.toLocaleString();
           }
@@ -62,7 +61,7 @@
 
 <style scoped>
   .login{
-    background: url("../../assets/bg.jpg") no-repeat center center;
+    background: url("../../assets/bg.jpeg") no-repeat center center;
     /*background-size: 100%;*/
     background-attachment: fixed;
     background-size: 100% 100%;
@@ -79,13 +78,13 @@
   }
   .third-box{
 
-    /* width:640px;
+    width:640px;
     background:rgba(0,0,0,0.6);
     border-radius:30px;
     text-align: center;
-    padding:30px 30px 40px; */
-    width:100%;
-    position: relative;
+    padding:30px 30px 40px;
+    /*width:100%;*/
+    /*position: relative;*/
   }
   .mask-box{
     position: absolute;
@@ -111,21 +110,20 @@
   .name{
     font-size:50px;
     color:#FFFF99;
-    /*margin-bottom:35px;*/
-    margin-top: 290px;
-    font-weight: 600;
+    margin-bottom:35px;
+    /*margin-top: 290px;*/
+    /*font-weight: 600;*/
   }
   .mubiao{
-    font-size:80px;
+    font-size:60px;
     /* color:rgba(234, 101, 10, 1); */
     color:#FFFF99;
     margin-top:50px;
     margin-bottom:45px;
-    font-family: 'Merck';
   }
   .number_txt{
       font-weight:600;
-      font-size:80px;
+      font-size:90px;
       font-style:italic;
   }
   .txt{
@@ -213,5 +211,9 @@
     /*-webkit-animation-name: bounceInDown;*/
     /*animation-name: bounceInDown*/
     animation: bounceInDown 1s linear;
+  }
+
+  .upper{
+    margin-left:10px;
   }
 </style>

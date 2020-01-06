@@ -56,14 +56,18 @@
           fhInfoSumit(this.code,this.name,this.user_name).then(res=>{
               console.log(res);
               if(res.data.code){
-                this.$router.push({
-                  path:'/thirdPage',
-                  query:{
-                    code:this.code
-                  }
-                });
+                if(res.data.data.is_fenghuo==1){
+                  this.$router.push({
+                    path:'/thirdPage',
+                    query:{
+                      code:this.code
+                    }
+                  });
+                }else {
+//                  this.$router.push('/game');
+                }
               }else{
-                this.$toast('请输入正确的经销店代码')
+                this.$toast('请仔细核对填写信息')
               }
           }).catch()
         }
@@ -75,7 +79,7 @@
 
 <style scoped>
   .secondPage{
-    background: url("../../assets/bg.jpg") no-repeat center center;
+    background: url("../../assets/bg.jpeg") no-repeat center center;
     /*background-size: 100%;*/
     background-attachment: fixed;
     background-size: 100% 100%;

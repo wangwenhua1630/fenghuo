@@ -5,6 +5,7 @@ import login from '@/page/login/login'
 import home from '@/page/home/home'
 import thirdPage from '@/page/third/thirdPage'
 import exportDown from '@/page/export/index'
+import game from '@/page/game/gamePage'
 
 import mettingflow from '@/page/mettingflow/mettingflow'
 
@@ -49,6 +50,14 @@ export default new Router({
             meta: {
                 title: '丰火百城计划'
             }
+        },
+        {
+          path: '/game',
+          name: 'game',
+          component: game,
+          meta: {
+            title: '丰火百城计划'
+          }
         },
         {
             path: '/',
