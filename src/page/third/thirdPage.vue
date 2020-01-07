@@ -7,6 +7,8 @@
         <p class="txt"><span class="number_txt">{{sale}}</span><sub class="upper">辆</sub></p>
 
       </div>
+
+
       <!--<div class="third-box bounceInDown">-->
            <!--<img src="../../assets/mubioa.png" alt="" style="width:100%;">-->
       <!--</div>-->
@@ -18,6 +20,8 @@
         <!--</div>-->
 
       <!--</div>-->
+      <div class="hudong bounceInDown" @click="goGame">互动一下</div>
+
     </div>
 
   </div>
@@ -52,8 +56,8 @@
         }).catch()
     },
     methods: {
-      goNext(){
-        this.$router.push('/thirdPage');
+      goGame(){
+        this.$router.push('/game');
       }
     }
   }
@@ -74,6 +78,7 @@
     justify-content: center;
     align-items: center;
     position: relative;
+    flex-direction: column;
     overflow: hidden;
   }
   .third-box{
@@ -86,6 +91,14 @@
     /*width:100%;*/
     /*position: relative;*/
   }
+  .hudong{
+    font-size:40px;
+    color:#FFFF99;
+    margin-top:50px;
+    font-style: italic;
+    display: flex;
+  }
+
   .mask-box{
     position: absolute;
     top:0;
