@@ -1,16 +1,21 @@
 <template>
   <div class="secondPage">
-
-    <div>
+    <div class="input-box">
       <input type="text" value="" v-model="code" placeholder="请输入经销店代码" class="login_input input2">
-    </div>
-    <div>
       <input type="text" value="" v-model="name" placeholder="请输入经销店简称" class="login_input input2">
-    </div>
-    <div>
       <input type="text" value="" v-model="user_name" placeholder="请输入聚力人姓名" class="login_input input2">
+      <button id="search" @click="next"  class="btn search">为百万聚力</button>
     </div>
-    <button id="search" @click="next"  class="btn search">为百万聚力</button>
+    <!--<div>-->
+      <!--<input type="text" value="" v-model="code" placeholder="请输入经销店代码" class="login_input input2">-->
+    <!--</div>-->
+    <!--<div>-->
+      <!--<input type="text" value="" v-model="name" placeholder="请输入经销店简称" class="login_input input2">-->
+    <!--</div>-->
+    <!--<div>-->
+      <!--<input type="text" value="" v-model="user_name" placeholder="请输入聚力人姓名" class="login_input input2">-->
+    <!--</div>-->
+    <!--<button id="search" @click="next"  class="btn search">为百万聚力</button>-->
   </div>
 </template>
 
@@ -64,7 +69,7 @@
                     }
                   });
                 }else {
-//                  this.$router.push('/game');
+                  this.$router.push('/game');
                 }
               }else{
                 this.$toast('请仔细核对填写信息')
@@ -88,6 +93,12 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+  }
+  .input-box{
+    width:690px;
+    padding:15px 0 40px;
+    background: rgba(255,255,255,1);
+    border-radius: 10px;
   }
   .img_header{
     width:665px;
@@ -136,15 +147,15 @@
   .login_input{
     width:470px;
     height:80px;
-    background:rgba(236,238,254,1);
+    /*background:rgba(236,238,254,1);*/
     border-radius:10px;
     padding-left:37px;
     margin:60px auto 40px;
     font-size:32px;
     font-weight:400;
-    /*color:rgba(43,8,94,1);*/
     border:none;
     color:#333;
+    border-bottom: 2px solid rgb(255, 224, 128);
   }
   .input2{
     margin:40px auto 69px;
@@ -176,22 +187,25 @@
   }
 
   .btn {
-    width: 383px;
-    height: 70px;line-height: 0;
-    border: 2px solid #fff;
-    background: #8E6735;
+    width: 530px;
+    height: 70px;
+    /*line-height: 0;*/
+    /*border: 2px solid #fff;*/
+    /*background: rgb(255, 224, 128);*/
+    background:linear-gradient(315deg,rgba(250,174,69,1) 0%,rgba(243,118,33,1) 100%);
     margin: 22px 0 0 17px;
     border-radius: 37px;
     -webkit-border-radius: 37px;
     -o-border-radius: 37px;
     -moz-border-radius: 37px;
-    text-shadow: 3px 2px #8E6735;
-    -webkit-text-shadow: 3px 2px #8E6735;
-    -o-text-shadow: 3px 2px #8E6735;
-    -moz-text-shadow: 3px 2px #8E6735;
+    /*text-shadow: 3px 2px rgb(255, 224, 128);*/
+    /*-webkit-text-shadow: 3px 2px rgb(255, 224, 128);*/
+    /*-o-text-shadow: 3px 2px rgb(255, 224, 128);*/
+    /*-moz-text-shadow: 3px 2px rgb(255, 224, 128);*/
     font-family: 微软雅黑;
     color:#fff;
     font-size:30px;
+    border:none;
   }
   #search{
     animation: breathe 1.1s infinite;

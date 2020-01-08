@@ -1,10 +1,13 @@
 <template>
   <div class="login">
     <div class="thirdPage">
+
+      <div class="sale_num bounceInDown">百万销量</div>
+
       <div class="third-box bounceInDown">
         <p class="name">{{name}}</p>
         <p class="mubiao">2020年销售目标</p>
-        <p class="txt"><span class="number_txt">{{sale}}</span><sub class="upper">辆</sub></p>
+        <p class="txt">预计<span class="number_txt">{{sale}}</span><sub class="upper">台</sub></p>
 
       </div>
 
@@ -97,6 +100,9 @@
     margin-top:50px;
     font-style: italic;
     display: flex;
+    border:1px solid #FFFF99;
+    padding:10px 20px;
+    border-radius: 5px;
   }
 
   .mask-box{
@@ -140,11 +146,17 @@
       font-style:italic;
   }
   .txt{
-    font-size:42px;
+    font-size:50px;
     font-weight:400;
     /* color:#333; */
     color:#FFFF99;
     margin-bottom:20px;
+  }
+  .sale_num{
+    font-size:80px;
+    font-weight:400;
+    color:#FFFF99;
+    margin-bottom:50px;
   }
 
   @-webkit-keyframes bounceInDown {

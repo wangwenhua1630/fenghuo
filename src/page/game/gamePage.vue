@@ -16,6 +16,8 @@
       <p class="fenghuo_txt">我为丰火助力<span class="fenghuo_num">{{num}}</span>台</p>
       <img src="../../assets/back.png" class="game_back" @click="goHome"/>
     </div>
+
+    <audio id="audio" :src="urls"  ref="MusicPlay" loop="loop" autoplay="autoplay" style="display:none"></audio>
   </div>
 </template>
 
@@ -30,7 +32,9 @@
         shineFlag:false,
         shineShow:false,
         num:0,
-        flag:false
+        flag:false,
+        urls:require('../../assets/bg_music.mp3'),
+        on:false
       }
 
     },
@@ -48,11 +52,16 @@
         var max = 0;
         var oW=$('.progress').css('width');
 
+        self.on=true;
+
         timer = setInterval(function () {
           max++;
           if (max > 250) {
             self.shineShow=false;
             self.flag=true;
+            self.on=false;
+            self.urls=require('../../assets/bg_music.mp3')
+            console.log(self.url);
             clearInterval(timer);
           }else{
             self.shineShow=true;
@@ -62,6 +71,9 @@
 
         }, 20)
 
+        if (self.on) {
+          self.urls=require("../../assets/dagu.mp3")
+        }
         document.addEventListener('touchstart', function () {
           if (max > 250) {
 //            event.preventDefault()
