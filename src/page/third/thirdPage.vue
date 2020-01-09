@@ -2,7 +2,8 @@
   <div class="login">
     <div class="thirdPage">
 
-      <div class="sale_num bounceInDown">百万销量</div>
+      <!-- <div class="sale_num bounceInDown">百万销量</div> -->
+      <img src="../../assets/baiwan.jpg" alt="" class="sale_num bounceInDown">
 
       <div class="third-box bounceInDown">
         <p class="name">{{name}}</p>
@@ -95,14 +96,28 @@
     /*position: relative;*/
   }
   .hudong{
-    font-size:40px;
+    /* font-size:40px;
     color:#FFFF99;
     margin-top:50px;
     font-style: italic;
     display: flex;
     border:1px solid #FFFF99;
     padding:10px 20px;
-    border-radius: 5px;
+    border-radius: 5px; */
+     width: 400px;
+    height: 70px;
+    line-height: 70px;
+    background: rgba(0,0,0,0);
+    border:2px solid rgb(252, 215, 152);
+    margin: 22px 0 0 17px;
+    border-radius: 37px;
+    -webkit-border-radius: 37px;
+    -o-border-radius: 37px;
+    -moz-border-radius: 37px;
+    font-family: 微软雅黑;
+    color:rgb(252, 215, 152);
+    font-size:30px;
+    margin-top:100px;
   }
 
   .mask-box{
@@ -153,10 +168,11 @@
     margin-bottom:20px;
   }
   .sale_num{
-    font-size:80px;
+    /* font-size:80px;
     font-weight:400;
-    color:#FFFF99;
+    color:#FFFF99; */
     margin-bottom:50px;
+    width:400px;
   }
 
   @-webkit-keyframes bounceInDown {

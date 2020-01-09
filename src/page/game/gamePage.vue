@@ -12,9 +12,10 @@
     <div class="tip" v-if="startFlag" ></div>
 
     <div class="mask" v-if="flag">
-      <div class="zan zan1"></div>
+      <!-- <div class="zan zan1"></div> -->
+      <img src="../../assets/topics.png" class='game_topic' />
       <p class="fenghuo_txt">我为丰火助力<span class="fenghuo_num">{{num}}</span>台</p>
-      <img src="../../assets/back.png" class="game_back" @click="goHome"/>
+      <!-- <img src="../../assets/back.png" class="game_back" @click="goHome"/> -->
     </div>
 
     <audio id="audio" :src="urls"  ref="MusicPlay" loop="loop" autoplay="autoplay" style="display:none"></audio>
@@ -239,6 +240,11 @@
     margin-bottom: 10px;
   }
   .zan1{animation: 1.2s big_s linear infinite;-webkit-animation: 1.5s big_s linear infinite;}
+
+  .game_topic{
+      width: 550px;
+      margin-top: 230px;
+  }
 
   .game_back{
     width:80px;

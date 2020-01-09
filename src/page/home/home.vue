@@ -1,10 +1,10 @@
 <template>
   <div class="secondPage">
-    <div class="input-box">
-      <input type="text" value="" v-model="code" placeholder="请输入经销店代码" class="login_input input2">
-      <input type="text" value="" v-model="name" placeholder="请输入经销店简称" class="login_input input2">
-      <input type="text" value="" v-model="user_name" placeholder="请输入聚力人姓名" class="login_input input2">
-      <button id="search" @click="next"  class="btn search">为百万聚力</button>
+    <div class="input-box login_fields__user">
+        <div class="icon">
+            <img src="../../assets/key.png" alt="">
+        </div>
+      <input type="text" value="" v-model="code" placeholder="请输入经销店代码" class="one_input">
     </div>
     <!--<div>-->
       <!--<input type="text" value="" v-model="code" placeholder="请输入经销店代码" class="login_input input2">-->
@@ -15,7 +15,7 @@
     <!--<div>-->
       <!--<input type="text" value="" v-model="user_name" placeholder="请输入聚力人姓名" class="login_input input2">-->
     <!--</div>-->
-    <!--<button id="search" @click="next"  class="btn search">为百万聚力</button>-->
+    <button id="search" @click="next"  class="btn search">为百万聚力</button>
   </div>
 </template>
 
@@ -52,13 +52,9 @@
         })
         if(this.code==''){
           this.$toast('请输入经销店代码')
-        } else if(this.name==""){
-          this.$toast('请输入经销店简称')
-        }else if(this.user_name==""){
-          this.$toast('请输入聚力人姓名')
         }else{
           this.$toast.clear();
-          fhInfoSumit(this.code,this.name,this.user_name).then(res=>{
+          fhInfoSumit(this.code).then(res=>{
               console.log(res);
               if(res.data.code){
                 if(res.data.data.is_fenghuo==1){
@@ -89,16 +85,51 @@
     background-attachment: fixed;
     background-size: 100% 100%;
     height:100%;
-    display:flex;
+    /* display:flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    flex-direction: column; */
   }
   .input-box{
     width:690px;
-    padding:15px 0 40px;
-    background: rgba(255,255,255,1);
+    padding:15px 0;
+    background: rgba(255,255,255,0.3);
     border-radius: 10px;
+    position: absolute;
+    top:40%;
+    left: 50%;
+    margin-left:-345px;
+    
+  }
+  .login_fields__user{
+      position: relative;
+  }
+  .login_fields__user .icon{
+      position: absolute;
+    z-index: 1;
+    left: 60px;
+    top: 50%;
+    margin-top:-20px;
+    opacity: .5;
+  }
+  .login_fields__user .icon>img{
+      width:40px;
+      height:40px;
+  }
+  .one_input{
+    width: 470px;
+    height:60px;
+    background: rgba(57, 61, 82, 0);
+    padding: 10px 65px;
+    border-top: 2px solid rgba(57, 61, 82, 0);
+    border-bottom: 2px solid rgba(57, 61, 82, 0);
+    border-right: none;
+    border-left: none;
+    outline: none;
+    font-family: 'Gudea', sans-serif;
+    box-shadow: none;
+    color:#fff;
+    font-size:30px;
   }
   .img_header{
     width:665px;
@@ -174,16 +205,16 @@
     margin-bottom:60px;
   }
   input::-webkit-input-placeholder{
-    color:#666;
+    color:#fff;
   }
   input::-moz-placeholder{   /* Mozilla Firefox 19+ */
-    color:#666;
+    color:#fff;
   }
   input:-moz-placeholder{    /* Mozilla Firefox 4 to 18 */
-    color:#666;
+    color:#fff;
   }
   input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
-    color:#666;
+    color:#fff;
   }
 
   .btn {
@@ -192,20 +223,22 @@
     /*line-height: 0;*/
     /*border: 2px solid #fff;*/
     /*background: rgb(255, 224, 128);*/
-    background:linear-gradient(315deg,rgba(250,174,69,1) 0%,rgba(243,118,33,1) 100%);
+    /* background:linear-gradient(315deg,rgba(150,102,20,1) 0%,rgba(246,193,1) 100%); */
+    background: rgba(0,0,0,0);
+    border:2px solid rgb(252, 215, 152);
     margin: 22px 0 0 17px;
     border-radius: 37px;
     -webkit-border-radius: 37px;
     -o-border-radius: 37px;
     -moz-border-radius: 37px;
-    /*text-shadow: 3px 2px rgb(255, 224, 128);*/
-    /*-webkit-text-shadow: 3px 2px rgb(255, 224, 128);*/
-    /*-o-text-shadow: 3px 2px rgb(255, 224, 128);*/
-    /*-moz-text-shadow: 3px 2px rgb(255, 224, 128);*/
     font-family: 微软雅黑;
-    color:#fff;
+    color:rgb(252, 215, 152);
     font-size:30px;
-    border:none;
+    /* border:none; */
+    position: absolute;
+    bottom:150px;
+    left:50%;
+    margin-left:-265px;
   }
   #search{
     animation: breathe 1.1s infinite;
