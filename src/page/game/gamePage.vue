@@ -1,15 +1,24 @@
 <template>
   <div class="game">
-    <div class="time">
-      <div class="progress"></div>
-      <div class="timer">{{num}}</div>
+
+    <div class="third-box">
+      <p class="mubiao">2020年销售目标</p>
+      <p class="name">{{name}}</p>
+      <p class="name">2020年年计</p>
+      <p class="txt"><span class="number_txt">{{sale}}</span><sub class="upper">台</sub></p>
+
     </div>
-    <div v-show="shineShow" class="shine" :class="shineFlag?'shine1':''"></div>
+
+    <div class="time">
+      <!--<div class="progress"></div>-->
+      <!--<div class="timer">{{num}}</div>-->
+    </div>
+    <!--<div v-show="shineShow" class="shine" :class="shineFlag?'shine1':''"></div>-->
     <div class="dram"></div>
     <div class="hammer1" :class="`${startFlag?'':'hammer3'} ${startFlag?'':dongFlag?'hammer5':'hammer6'}`"> </div>
     <div class="hammer2" :class="`${startFlag?'':'hammer4'} ${startFlag?'':dongFlag?'hammer7':'hammer8'}`"> </div>
-    <div class="start" v-if="startFlag" @click="start"></div>
-    <div class="tip" v-if="startFlag" ></div>
+    <div class="start" v-if="startFlag" @click="beat"></div>
+    <!--<div class="tip" v-if="startFlag" ></div>-->
 
     <div class="mask" v-if="flag">
       <!-- <div class="zan zan1"></div> -->
@@ -23,6 +32,7 @@
 </template>
 
 <script>
+  import {fhInfoSumit} from '../../api/api'
   import $ from 'jquery'
   export default {
     name: "login",
@@ -35,19 +45,81 @@
         num:0,
         flag:false,
         urls:require('../../assets/bg_music.mp3'),
-        on:false
+        on:false,
+        code:this.$route.query.code,
+        name:'',
+        sale:0,
+        income:0
       }
 
     },
     mounted(){
-
+      this.$toast.loading({
+        duration:0,
+        title:'loading'
+      })
+      fhInfoSumit(this.code).then(res=>{
+        this.$toast.clear();
+        if(res.data){
+          this.name=res.data.data.name;
+          this.sale=res.data.data.sale.toLocaleString();
+          this.income=res.data.data.income.toLocaleString();
+        }
+      }).catch()
     },
     methods: {
         start(){
           this.startFlag=false;
-          this.beat();
+//          this.beat();
         },
       beat() {
+        var self=this;
+
+        this.startFlag=false;
+
+        self.on=true;
+
+
+          if (self.num >= 3) {
+            self.shineShow=false;
+
+            self.on=false;
+            self.urls=require('../../assets/bg_music.mp3')
+          }else{
+            self.shineShow=true;
+
+          }
+
+
+
+        if (self.on) {
+          self.urls=require("../../assets/dagu.mp3")
+        }
+        document.addEventListener('touchstart', function () {
+          if (self.num >= 3) {
+//            event.preventDefault()
+            self.$router.push({
+              path:'/thirdPage',
+              query:{
+                code:self.$route.query.code
+              }
+            });
+          }else{
+            self.num++;
+            self.dongFlag=false;
+            self.shineFlag=true;
+          }
+
+        })
+
+        document.addEventListener('touchend', function () {
+          self.dongFlag=true;
+
+          self.shineFlag=false;
+        })
+
+      },
+      beats() {
         var self=this;
         var timer = null;
         var max = 0;
@@ -108,6 +180,9 @@
     height:100%;
     position: relative;
     overflow: hidden;
+    display:flex;
+    justify-content: center;
+    align-items: flex-start;
   }
 
   .game>div{
@@ -118,13 +193,13 @@
     width: 750px;
     height:820px;
     background-size: 100% 100%;
-    bottom: -50px;
+    bottom: -150px;
     left: 0;
   }
   .time{
     width: 750px;
-    background: url(../../assets/game_icon1.png);
-    height: 328px;
+    background: url(../../assets/game_icon11.png);
+    height: 128px;
     top: 0;
     left: 0;
     background-size: 100% 100%;
@@ -188,6 +263,7 @@
     left: 243px;
     bottom: 180px;
   }
+
   .tip{
     background: url(../../assets/game_icon7.png);
     width: 261px;
@@ -289,5 +365,117 @@
     100% {
       -webkit-transform: scale(1.2);
     }
+  }
+
+  .third-box{
+
+    width:640px;
+    /*background:rgba(0,0,0,0.2);*/
+    border-radius:30px;
+    text-align: center;
+    /*padding:30px 30px 40px;*/
+    margin:80px auto 0;
+    z-index: 1000;
+    position: relative;
+  }
+  .name{
+    font-size:60px;
+    color:#333;
+    margin-bottom:15px;
+    margin-top:15px;
+  }
+  .mubiao{
+    font-size:60px;
+    color:#333;
+    margin-top:30px;
+    margin-bottom:35px;
+    font-weight: bold;
+  }
+  .number_txt{
+    font-weight:600;
+    font-size:90px;
+    font-style:italic;
+  }
+  .txt{
+    font-size:50px;
+    font-weight:400;
+    color:#333;
+    margin-bottom:20px;
+    margin-top:20px;
+  }
+
+  @-webkit-keyframes bounceInDown {
+
+    0% {
+      opacity: 0;
+      -webkit-transform: translate3d(0,-3000px,0);
+      transform: translate3d(0,-3000px,0)
+    }
+
+    60% {
+      opacity: 1;
+      -webkit-transform: translate3d(0,25px,0);
+      transform: translate3d(0,25px,0)
+    }
+
+    75% {
+      -webkit-transform: translate3d(0,-10px,0);
+      transform: translate3d(0,-10px,0)
+    }
+
+    90% {
+      -webkit-transform: translate3d(0,5px,0);
+      transform: translate3d(0,5px,0)
+    }
+
+    100% {
+      -webkit-transform: none;
+      transform: none
+    }
+  }
+
+  @keyframes bounceInDown {
+    /*0%,100%,60%,75%,90% {*/
+    /*-webkit-transition-timing-function: cubic-bezier(0.215,.61,.355,1);*/
+    /*transition-timing-function: cubic-bezier(0.215,.61,.355,1)*/
+    /*}*/
+
+    0% {
+      opacity: 0;
+      -webkit-transform: translate3d(0,-3000px,0);
+      -ms-transform: translate3d(0,-3000px,0);
+      transform: translate3d(0,-3000px,0)
+    }
+
+    60% {
+      opacity: 1;
+      -webkit-transform: translate3d(0,25px,0);
+      -ms-transform: translate3d(0,25px,0);
+      transform: translate3d(0,25px,0)
+    }
+
+    75% {
+      -webkit-transform: translate3d(0,-10px,0);
+      -ms-transform: translate3d(0,-10px,0);
+      transform: translate3d(0,-10px,0)
+    }
+
+    90% {
+      -webkit-transform: translate3d(0,5px,0);
+      -ms-transform: translate3d(0,5px,0);
+      transform: translate3d(0,5px,0)
+    }
+
+    100% {
+      -webkit-transform: none;
+      -ms-transform: none;
+      transform: none
+    }
+  }
+
+  .bounceInDown {
+    /*-webkit-animation-name: bounceInDown;*/
+    /*animation-name: bounceInDown*/
+    animation: bounceInDown 1s linear;
   }
 </style>

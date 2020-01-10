@@ -4,7 +4,7 @@
         <div class="icon">
             <img src="../../assets/key.png" alt="">
         </div>
-      <input type="text" value="" v-model="code" placeholder="请输入经销店代码" class="one_input">
+      <input type="text" value="" v-model="code" placeholder="请输入经销店代码" class="one_input" @blur="onBlur">
     </div>
     <!--<div>-->
       <!--<input type="text" value="" v-model="code" placeholder="请输入经销店代码" class="login_input input2">-->
@@ -59,13 +59,13 @@
               if(res.data.code){
                 if(res.data.data.is_fenghuo==1){
                   this.$router.push({
-                    path:'/thirdPage',
+                    path:'/game',
                     query:{
                       code:this.code
                     }
                   });
                 }else {
-                  this.$router.push('/game');
+                  this.$toast('请仔细核对填写信息')
                 }
               }else{
                 this.$toast('请仔细核对填写信息')
@@ -73,6 +73,9 @@
           }).catch()
         }
 
+      },
+      onBlur(){
+        window.scrollTo(0,0)
       }
     }
   }
@@ -99,7 +102,7 @@
     top:40%;
     left: 50%;
     margin-left:-345px;
-    
+
   }
   .login_fields__user{
       position: relative;

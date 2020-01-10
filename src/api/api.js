@@ -252,13 +252,22 @@ export function utf16toEntities(str) {
 
 
 //信息提交
-export function fhInfoSumit(code, name, username) {
-    const data = qs.stringify({ code, name, username })
+export function fhInfoSumit(code) {
+    const data = qs.stringify({ code})
     return fetch({
         url: '/api/home/search',
         method: 'post',
         data: data
     })
+}
+//信息提交
+export function fhInfoSumit2(code) {
+  const data = qs.stringify({ code})
+  return fetch({
+    url: '/api/home/search2',
+    method: 'post',
+    data: data
+  })
 }
 
 //下载
