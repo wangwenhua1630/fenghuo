@@ -4,7 +4,7 @@
         <div class="icon">
             <img src="../../assets/key.png" alt="">
         </div>
-      <input type="text" value="" v-model="code" placeholder="请输入经销店代码" class="one_input">
+      <input type="text" value="" v-model="code" placeholder="请输入经销店代码" class="one_input" @blur="onBlur">
     </div>
     <!--<div>-->
       <!--<input type="text" value="" v-model="code" placeholder="请输入经销店代码" class="login_input input2">-->
@@ -73,7 +73,10 @@
           }).catch()
         }
 
-      }
+      },
+      onBlur() {
+        window.scrollTo(0, 0) // input失去焦点，让页面回顶部
+     }
     }
   }
 </script>
