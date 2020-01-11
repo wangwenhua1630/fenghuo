@@ -3,12 +3,12 @@
     <div class="thirdPage">
 
       <!-- <div class="sale_num bounceInDown">百万销量</div> -->
-      <img src="../../assets/baiwan.jpg" alt="" class="sale_num bounceInDown">
+      <img src="../../assets/baiwan.jpeg" alt="" class="sale_num bounceInDown">
 
       <div class="third-box bounceInDown">
         <p class="name">{{name}}</p>
-        <p class="mubiao">2020年销售目标</p>
-        <p class="txt">预计<span class="number_txt">{{sale}}</span><sub class="upper">台</sub></p>
+        <p class="mubiao">2022年销售规模</p>
+        <p class="txt"><span class="number_txt">{{sale}}</span><sub class="upper">台</sub></p>
 
       </div>
 
@@ -24,15 +24,15 @@
         <!--</div>-->
 
       <!--</div>-->
-      <div class="hudong bounceInDown" @click="goGame">互动一下</div>
-
+      <!--<div class="hudong bounceInDown" @click="goGame">互动一下</div>-->
+      <div class="bootom_txt">2022年数据仅为预测值，并非年计目标，仅供参考</div>
     </div>
 
   </div>
 </template>
 
 <script>
-  import {fhInfoSumit} from '../../api/api'
+  import {fhInfoSumit2} from '../../api/api'
   export default {
     name: "login",
     data(){
@@ -50,7 +50,7 @@
           duration:0,
           title:'loading'
         })
-      fhInfoSumit(this.code).then(res=>{
+      fhInfoSumit2(this.code).then(res=>{
           this.$toast.clear();
           if(res.data){
              this.name=res.data.data.name;
@@ -60,9 +60,7 @@
         }).catch()
     },
     methods: {
-      goGame(){
-        this.$router.push('/game');
-      }
+     
     }
   }
 </script>
@@ -256,5 +254,12 @@
 
   .upper{
     margin-left:10px;
+  }
+
+  .bootom_txt{
+    color:#fff;
+    font-size:24px;
+    position: fixed;
+    bottom:30px;
   }
 </style>

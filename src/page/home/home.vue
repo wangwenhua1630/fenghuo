@@ -33,16 +33,6 @@
     },
     mounted(){
 
-//        this.$toast.loading({
-//          duration:0,
-//          title:'loading'
-//        })
-//        relogin().then(res=>{
-//          this.$toast.clear();
-//          if(res.data.flag){
-//            this.$router.push('/home')
-//          }
-//        }).catch()
     },
     methods: {
       next(){
@@ -59,13 +49,13 @@
               if(res.data.code){
                 if(res.data.data.is_fenghuo==1){
                   this.$router.push({
-                    path:'/thirdPage',
+                    path:'/game',
                     query:{
                       code:this.code
                     }
                   });
                 }else {
-                  this.$router.push('/game');
+                  this.$toast('请仔细核对填写信息')
                 }
               }else{
                 this.$toast('请仔细核对填写信息')
@@ -102,7 +92,7 @@
     top:40%;
     left: 50%;
     margin-left:-345px;
-    
+
   }
   .login_fields__user{
       position: relative;

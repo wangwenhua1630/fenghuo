@@ -1,10 +1,10 @@
 <template>
     <div class="login">
-      <div class="first"  @click="goNext">
+      <div class="first" @click="goNext">
           <div class="rubberBand">
               <img src="../../assets/topic.png" alt="" class="topic-img">
           </div>
-
+          <div class="goIn">点击进入</div>
       </div>
 
     </div>
@@ -21,16 +21,6 @@
       },
       mounted(){
 
-//        this.$toast.loading({
-//          duration:0,
-//          title:'loading'
-//        })
-//        relogin().then(res=>{
-//          this.$toast.clear();
-//          if(res.data.flag){
-//            this.$router.push('/home')
-//          }
-//        }).catch()
       },
       methods: {
         goNext(){
@@ -162,5 +152,13 @@
   /* -webkit-animation-name: rubberBand;
   animation-name: rubberBand; */
   animation: zoomIn 0.5s linear;
+}
+
+.goIn{
+    position: fixed;
+    bottom:200px;
+    font-size:32px;
+    color:#fff;
+    opacity: 0.3;
 }
 </style>
